@@ -11,4 +11,8 @@ class Product
     function getPrice(){
         return $this->price;
     }
+    function setPrice($price){
+        $this->price = $price;
+        return $this;
+    }
 }
