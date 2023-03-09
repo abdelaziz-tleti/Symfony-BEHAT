@@ -8,7 +8,8 @@ use Behat\Behat\Context\Context;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
-
+use App\Entity\Basket;
+use App\Entity\Product;
 /**
  * This context class contains the definitions of the steps used by the demo
  * feature file. Learn how to get started with Behat and BDD on Behat's website.
@@ -45,4 +46,34 @@ final class DemoContext implements Context
             throw new \RuntimeException('No response received');
         }
     }
+
+
+    /**
+     * @Given an empty basket
+     */
+    public function anEmptyBasket()
+    {
+        $this->basket = new Basket();
+    }   
+
+
+    /**
+     * @When I add a new product costing :arg1 € to the basket
+     */
+    public function iAddANewProductCostingEurToTheBasket($arg1)
+    {
+        $product = new Product($arg1);
+        $this->basket->add($product);
+    }
+
+   /**
+     * @Then the basket price is :arg1 €
+     */
+    public function theBasketPriceIsEur($arg1)
+    {
+        if($this->basket->price() != $arg1){
+            throw new Exception('Le prix ne correspond pas');
+        }    }
+
+
 }

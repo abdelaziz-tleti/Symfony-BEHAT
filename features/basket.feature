@@ -10,3 +10,9 @@ Feature:
     Scenario: It receives a response from Symfony's kernel
         When a demo scenario sends a request to "/"
         Then the response should be received
+
+
+    Scenario: Basket with one product
+        Given an empty basket
+        When I add a new product costing 10 € to the basket
+        Then the basket price is 10 €
