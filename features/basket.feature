@@ -13,6 +13,6 @@ Feature:
 
 
     Scenario: Basket with one product
-        Given an empty basket
+        Given loaded fixtures
         When I add a new product costing 10 € to the basket
         Then the basket price is 10 €

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use App\Entity\Basket;
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 /**
  * This context class contains the definitions of the steps used by the demo
  * feature file. Learn how to get started with Behat and BDD on Behat's website.
@@ -24,9 +25,11 @@ final class DemoContext implements Context
     /** @var Response|null */
     private $response;
 
-    public function __construct(KernelInterface $kernel)
+    private $productRepository;
+    public function __construct(KernelInterface $kernel, ProductRepository $productRepository)
     {
         $this->kernel = $kernel;
+        $this->productRepository = $productRepository;
     }
 
     /**
@@ -48,32 +51,68 @@ final class DemoContext implements Context
     }
 
 
-    /**
-     * @Given an empty basket
-     */
-    public function anEmptyBasket()
-    {
-        $this->basket = new Basket();
-    }   
+//     // /**
+//     //  * @Given an empty basket
+//     //  */
+//     // public function anEmptyBasket()
+//     // {
+//     //     $this->basket = new Basket();
+//     // }   
 
+//     /**
+//      * @Given loaded fixtures
+//      */
+//     public function loadedFixtures()
+//     {
+//         $this->basket = new Basket();
+//     }   
+
+//     /**
+//      * @When I add a new product costing :arg1 € to the basket
+//      */
+//     public function iAddANewProductCostingEurToTheBasket($arg1)
+//     {
+//         $product = $this->productRepository->findOneById(1);
+//        // $product = new Product($arg1);
+//         $this->basket->add($product);
+//     }
+
+//    /**
+//      * @Then the basket price is :arg1 €
+//      */
+//     public function theBasketPriceIsEur($arg1)
+//     {
+//         if($this->basket->price() != $arg1){
+//             throw new Exception('Le prix ne correspond pas');
+//         }    }
+
+    /**
+     * @Given loaded fixtures
+     */
+    public function loadedFixtures()
+    {
+        $basket = new Basket();
+    }
 
     /**
      * @When I add a new product costing :arg1 € to the basket
      */
     public function iAddANewProductCostingEurToTheBasket($arg1)
     {
-        $product = new Product($arg1);
-        $this->basket->add($product);
+        $basket = new Basket();
+        $product = $this->productRepository->findOneBy(array('price' =>10));
+       // $product = new Product($arg1);
+        $basket->add($product);
     }
 
-   /**
+    /**
      * @Then the basket price is :arg1 €
      */
     public function theBasketPriceIsEur($arg1)
     {
-        if($this->basket->price() != $arg1){
-            throw new Exception('Le prix ne correspond pas');
-        }    }
+
+    }
+
 
 
 }

@@ -11,4 +11,5 @@ default:
             sessions:
                 symfony:
                     symfony: ~
-        FriendsOfBehat\SymfonyExtension: null
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php

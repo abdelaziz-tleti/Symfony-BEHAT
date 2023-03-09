@@ -1,18 +1,38 @@
 <?php
+
 namespace App\Entity;
 
+use App\Repository\ProductRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
-    private $price;
-    function __construct($price)
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $price = null;
+
+
+    public function getId(): ?int
     {
-        $this->price = $price;
+        return $this->id;
     }
-    function getPrice(){
+
+    public function getPrice(): ?int
+    {
         return $this->price;
     }
-    function setPrice($price){
+
+    public function setPrice(?int $price): self
+    {
         $this->price = $price;
+
         return $this;
     }
+
+
 }
