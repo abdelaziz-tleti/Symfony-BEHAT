@@ -25,14 +25,17 @@
     },
     "require-dev": {
         "behat/behat": "^3.12",
-        "doctrine/data-fixtures": "^1.6",
+        "doctrine/data-fixtures": "*",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "friends-of-behat/mink-browserkit-driver": "^1.6",
         "friends-of-behat/mink-extension": "^2.7",
         "friends-of-behat/page-object-extension": "^0.3.2",
         "friends-of-behat/symfony-extension": "^2.4",
+        "liip/test-fixtures-bundle": "^2.0.0",
         "phpunit/phpunit": "^10.0",
-        "symfony/maker-bundle": "^1.48"
+        "symfony/css-selector": "6.2.*",
+        "symfony/maker-bundle": "^1.48",
+        "symfony/phpunit-bridge": "^6.2"
     },
     "config": {
         "allow-plugins": {

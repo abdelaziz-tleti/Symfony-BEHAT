@@ -1,0 +1,3 @@
+Product:
+    product_{1..2}:
+        price: 4
