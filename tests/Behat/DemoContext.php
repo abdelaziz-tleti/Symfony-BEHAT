@@ -111,9 +111,7 @@ final class DemoContext  extends WebTestCase implements Context
     {
         $basket = new Basket();
         $product = $this->productRepository->findOneBy(array('price' => $arg1));
-
         $basket->add($product);
-
         Assert::assertNotEquals($basket->price(), '10');
     }
 
@@ -124,9 +122,7 @@ final class DemoContext  extends WebTestCase implements Context
     {
         $basket = new Basket();
         $product = $this->productRepository->findOneBy(array('price' => $arg1));
-
         $basket->add($product);
-
         Assert::assertEquals($basket->price(), '10');
     }
 }

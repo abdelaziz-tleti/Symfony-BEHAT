@@ -19,11 +19,11 @@ Feature:
 
 
     Scenario: Basket with one product 5 from database
-        Given loaded fixtures
-        When I add a new 5 to the basket
-        Then the basket price is 10 €
+        #Given loaded fixtures
+        When I add a new 9 to the basket
+        Then the basket price is 9 €
 
     Scenario: Basket with one product 10 from database
-        Given loaded fixtures
+        #Given loaded fixtures
         When I add a new 10 to the basket ok
         Then the basket price is 10 €

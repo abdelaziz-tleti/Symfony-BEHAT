@@ -1,11 +1,24 @@
 # Symfony-BEHAT
+
+
+# Installation
+Clone the project :
+```sh
+git clone git@github.com:abdelaziz-tleti/Symfony-BEHAT.git
+cd Symfony-BEHAT
+```
+Init Project ( Install dependencies & start docker .. )  
+```sh
 bin/workspace init
+```
 
-docker-compose exec php vendor/bin/behat
-
-
-docker-compose exec php bin/console doctrine:fixtures:load --append
-
+Create sqlite test database 
+Laod fixtures 
+Execute Behat tests
+```sh
+bin/workspace behat
+```
+# Samples
 
 
     Scenario: Basket with one product 5 from database
@@ -40,3 +53,6 @@ docker-compose exec php bin/console doctrine:fixtures:load --append
         $basket->add($product);
         Assert::assertEquals($basket->price(), '10');
     }
+    
+    
+ ![image](https://user-images.githubusercontent.com/3765550/224267733-bba94608-e258-4a24-a8db-767c96d87801.png)

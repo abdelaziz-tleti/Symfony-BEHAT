@@ -39,6 +39,15 @@ migrate ()
    docker-compose exec php bin/console doctrine:migrations:migrate --env=dev
 }
 
+
+behat ()
+{
+   docker-compose exec php  bin/console doctrine:database:create  --env=test
+   docker-compose exec php  bin/console doctrine:migrations:migrate --no-interaction --env=test 
+   docker-compose exec php bin/console doctrine:fixtures:load --append  --env=test
+   docker-compose exec php vendor/bin/behat
+}
+
 usage ()
 {
 echo -e "
